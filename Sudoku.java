@@ -3,13 +3,13 @@
 ************************************************
 *
 * Authors: 		Claire Giry
-*			Hans-Peter Hoellwirth
-*			Scott Cantisani
-*			Simranbir Singh
-*			Oana Radu
+*				Hans-Peter Hoellwirth
+*				Scott Cantisani
+*				Simranbir Singh
+*				Oana Radu
 *
 * Creation date:	06.02.2013
-* Last updated:		13.02.2013
+* Last updated:		14.02.2013
 ***********************************************/
 public class Sudoku {
 
@@ -19,7 +19,7 @@ public class Sudoku {
 		initBoard();
 		printBoard();
 		System.out.println();
-		solveBoard(nextEmpty(0, 0)[0], nextEmpty(0, 0)[1], 1);
+		solveBoard();
 		printBoard();
 	}
 
@@ -69,8 +69,12 @@ public class Sudoku {
 		}
 	}
 
+	public boolean solveBoard () {
+		return solveBoard(nextEmpty(0, 0)[0], nextEmpty(0, 0)[1], 1);
+	}
+
 	public boolean solveBoard (int i, int j, int n) {
-		
+
 		int[] col = new int[9];
 		int[] row = new int[9];
 		int[] block = new int[9];
@@ -106,9 +110,9 @@ public class Sudoku {
 	}
 
 	public int[] nextEmpty (int i, int j) {
-		
+
 		int[] empty = new int[2];
-		
+
 		for (j = j; j < 9; j++) {
 			if (board[i][j] == 0) {
 				empty[0] = i;
@@ -167,10 +171,6 @@ public class Sudoku {
 			}
 		}
 		return false;
-	}
-
-	public static void main (String[] args) {
-		Sudoku sudoku = new Sudoku();
 	}
 
 }
